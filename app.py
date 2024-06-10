@@ -6,7 +6,7 @@ from sqlalchemy import create_engine
 import sqlite3
 from datetime import datetime
 
-churro = "sqlite:///mpgdb.db"
+churro = "postgresql://postgres:postgresql@34.38.59.142/postgres"
 engine = create_engine(churro)
 
 
@@ -52,14 +52,6 @@ def predict():
 @app.route("/check_logs", methods=["GET"])
 def check_logs():
     return pd.read_sql("SELECT * FROM logs", con=engine).to_html()
-
-
-
-
-
-
-
-
 
 
 if __name__ == "main":
